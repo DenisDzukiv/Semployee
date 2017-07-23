@@ -261,6 +261,14 @@ public class Controller {
         return "index";
     }
 
+    @ExceptionHandler(Error.class)
+    public ModelAndView handler(Exception ex){
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("error", ex);
+        return modelAndView;
+    }
+
+
     public Map<Long, String> listTypeEmployee() {
         List<TypeEmployee> typeEmployeesAll = typeEmployeeDao.findAll();
         Map<Long, String> typeEmployeesMap = new LinkedHashMap<>();
